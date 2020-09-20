@@ -1,10 +1,8 @@
 <?php
 declare(strict_types=1);
 
-namespace Taxonomies\Controller\Admin;
-
-use Cake\Datasource\ConnectionManager;
-use App\Controller\Admin\AppController as BaseController;
+namespace Taxonomies\Controller;
+use App\Controller\AppController as BaseController;
 
 class AppController extends BaseController
 {
@@ -13,9 +11,4 @@ class AppController extends BaseController
         parent::initialize();
     }
 
-    protected function enableTestDatabase()
-    {
-        $connection = ConnectionManager::get('test');
-        $this->{$this->getName()}->setConnection($connection);
-    }
 }
