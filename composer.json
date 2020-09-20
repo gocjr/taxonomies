@@ -1,0 +1,22 @@
+{
+    "name": "gocjr/taxonomies",
+    "description": "Taxonomies plugin for cakephp",
+    "type": "cakephp-plugin",
+    "license": "mit",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Giovani Junior",
+            "email": "giovaniocjr@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Gocjr\\Taxonomies\\": "src"
+        }
+    },
+    "autoload-dev": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {}
+}
