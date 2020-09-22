@@ -11,10 +11,6 @@ class TermsController extends AppController
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
-        $this->Breadcrumbs
-            ->add('Admin', ['action' => 'index', 'controller' => 'Dashoard', 'plugin' => false])
-            ->add('Taxonomies', ['action' => 'index', 'controller' => 'Taxonomies'])
-            ->add('Terms');
     }
 
     public function index()
@@ -29,29 +25,26 @@ class TermsController extends AppController
 
         $rows = $this->paginate($terms);
         $this->set('rows', $rows);
-        //parent::_read($terms);
     }
 
     public function add()
     {
-        $this->Breadcrumbs->add('Terms', ['action' => 'index'])->add('Add');;
         parent::_create($this->Terms);
-        $this->setVocabulariesToView();
+        $this->_setCommonData();
     }
 
     public function edit($id = null)
     {
-        $this->Breadcrumbs->add('Terms', ['action' => 'index'])->add('Edit');;
         parent::_update($this->Terms, ['id' => $id, 'contain' => ['Taxonomies']]);
-        $this->setVocabulariesToView();
+        $this->_setCommonData();
     }
 
     public function delete($id = null)
     {
-        parent::_delete($this->Terms, $id);
+        parent::_remove($this->Terms, $id);
     }
 
-    private function setVocabulariesToView()
+    private function _setCommonData()
     {
         $taxonomies = $this->Terms->Taxonomies->find('assoc')->toArray();
         foreach ($taxonomies as $i => $taxonomy) {

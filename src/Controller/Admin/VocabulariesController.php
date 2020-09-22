@@ -7,13 +7,10 @@ use Cake\Event\EventInterface;
 class VocabulariesController extends AppController
 {
 
-    public function initialize(): void
+    public function beforeRender(EventInterface $event)
     {
-        parent::initialize();
-        $this->Breadcrumbs
-            ->add('Admin', ['action' => 'index', 'controller' => 'Dashoard', 'plugin' => false])
-            ->add('Taxonomies', ['action' => 'index', 'controller' => 'Taxonomies'])
-            ->add('Vocabularies');
+        parent::beforeRender($event);
+        $this->addCrumb('Taxonomies', ['action' => 'index']);
     }
 
     public function index()
@@ -31,16 +28,14 @@ class VocabulariesController extends AppController
 
     public function add()
     {
-        $this->Breadcrumbs->add('Vocabularies', ['action' => 'index'])->add('Add');
         parent::_create($this->Vocabularies);
-        $this->set('types', $this->Vocabularies->Taxonomies->Types->find('list'));
+        $this->_setCommonData();
     }
 
     public function edit($id = null)
     {
-        $this->Breadcrumbs->add('Vocabularies', ['action' => 'index'])->add('Edit');
         parent::_update($this->Vocabularies, ['id' => $id, 'contain' => ['Types']]);
-        $this->set('types', $this->Vocabularies->Taxonomies->Types->find('list'));
+        $this->_setCommonData();
     }
 
     public function delete($id = null)
@@ -49,23 +44,8 @@ class VocabulariesController extends AppController
     }
 
 
-    private function _debugTest(array $options = [])
+    protected function _setCommonData(): void
     {
-        $model = $this->{$this->getName()};
-        $id = current($this->request->getParam('pass'));
-
-        $row = $model->newEmptyEntity();
-        if ($id) {
-            $row = $model->get($id, $options);
-        }
-        $data = $this->request->getData();
-        $row = $model->patchEntity($row, $data);
-
-        if ($this->request->is(['put', 'post'])) {
-
-            $model->save($row);
-        }
-
-        $this->set('row', $row);
+        $this->set('types', $this->Vocabularies->Taxonomies->Types->find('list'));
     }
 }
