@@ -18,5 +18,7 @@
     "autoload-dev": {},
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require": {}
+    "require": {
+        "gocjr/appearances": "dev-master"   
+    }
 }
