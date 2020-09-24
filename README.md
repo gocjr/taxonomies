@@ -9,3 +9,9 @@ The recommended way to install composer packages is:
 ```
 composer require gocjr/taxonomies
 ```
+OR
+```
+"require": {
+    "gocjr/taxonomies": "dev-master"
+}
+```
