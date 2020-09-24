@@ -11,7 +11,5 @@ composer require gocjr/taxonomies
 ```
 OR
 ```
-"require": {
-    "gocjr/taxonomies": "dev-master"
-}
+"require": { "gocjr/taxonomies": "dev-master" }
 ```
