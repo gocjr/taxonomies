@@ -20,6 +20,6 @@
     "prefer-stable": true,
      "require": {},
     "require-dev": {
-        "gocjr/appearances": "dev-master"   
+        "gocjr/appearances": "1.0"   
     }
 }
