@@ -2,7 +2,7 @@
     "name": "gocjr/taxonomies",
     "description": "Taxonomies plugin for cakephp",
     "type": "cakephp-plugin",
-    "license": "mit",
+    "license": "MIT",
     "version": "1.0",
     "authors": [
         {
@@ -18,7 +18,8 @@
     "autoload-dev": {},
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require": {
+     "require": {},
+    "require-dev": {
         "gocjr/appearances": "dev-master"   
     }
 }
